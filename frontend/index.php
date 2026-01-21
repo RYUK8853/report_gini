@@ -348,6 +348,18 @@
         border-color: #28a745;
         box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.15);
     }
+    .btn-secondary{
+        background-color: black;
+        border-color: black;
+        color: white;
+    }
+    .btn-secondary:hover {
+        background-color: #333333;
+        border-color: #333333;
+        color: white;
+        transform: translate3d(-2px, -2px, 0);
+        box-shadow: #545b62;
+    }
 
     </style>
 </head>
@@ -466,10 +478,10 @@
                     <div class="col-md-6">
                         <label for="geminiModel" class="form-label" style="color: #28a745; font-weight: 400;">Gemini Model</label>
                         <select class="form-select" id="geminiModel" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;">
+                            <option value="gemini-2.0-flash" selected>gemini-2.0-flash</option>
                             <option value="gemini-1.5-flash">gemini-1.5-flash</option>
                             <option value="gemini-1.5-pro">gemini-1.5-pro</option>
                             <option value="gemini-pro">gemini-pro</option>
-                            <option value="gemini-2.0-flash" selected>gemini-2.0-flash</option>
                         </select>
                     </div>
                 </div>
@@ -517,11 +529,11 @@
                 <h3 class="mb-1" style="color: #28a745; font-weight: 500;">My Saved Chatbots</h3>
                 <p class="text-muted mb-0" style="font-size: 14px;">Manage and deploy your AI assistants</p>
             </div>
-            <div class="d-flex gap-2">
+            <!-- <div class="d-flex gap-2">
                 <button class="btn btn-outline-success" style="border-radius: 10px; padding: 8px 20px; font-weight: 600;">
                     <i class="fas fa-filter me-2"></i>Filter
                 </button>
-            </div>
+            </div> -->
         </div>
         
         <!-- Search and Sort Bar -->
@@ -587,8 +599,8 @@
         const micBtn = document.getElementById('micBtn');
         const refreshBtn = document.getElementById('refreshBtn');
 
-        const API_BASE = 'https://share-chatbot-2.onrender.com';
-        // const API_BASE = 'http://localhost:5001';
+        // const API_BASE = 'https://share-chatbot-2.onrender.com';
+        const API_BASE = 'http://localhost:5001';
 
         let clickCount = 0;
         let configured = false;
@@ -1131,7 +1143,7 @@
                 }
                 formData.append('mongo_uri', mongoUri);
                 formData.append('mongo_db_name', mongoDbName);
-                formData.append('selected_collections', JSON.stringify(selectedTables));
+                formData.append('selected_tables', JSON.stringify(selectedTables));
             } else if(dataSource === 'airtable') {
                 const airtableApiKey = document.getElementById('airtableApiKey').value.trim();
                 const airtableBaseId = document.getElementById('airtableBaseId').value.trim();
@@ -1476,6 +1488,7 @@
                 // Populate modal with existing data
                 document.getElementById('username').value = chatbot.username || '';
                 document.getElementById('chatbotName').value = chatbot.chatbot_name || '';
+                document.getElementById('companyName').value = chatbot.company_name || '';
                 document.getElementById('chatbotId').value = chatbot.id || '';
                 document.getElementById('dataSource').value = chatbot.data_source || 'None';
                 document.getElementById('geminiModel').value = chatbot.gemini_model || 'gemini-2.0-flash';

@@ -24,6 +24,106 @@ import requests
 from google.auth.transport.requests import Request
 import os
 from werkzeug.utils import secure_filename
+import time
+
+# --- Retry Helper Functions ---
+def parse_retry_delay(error_details):
+    """
+    Parse retry delay from Google API error response.
+    
+    Args:
+        error_details: Error details from the API response
+        
+    Returns:
+        float: Retry delay in seconds, or None if not found
+    """
+    try:
+        details = error_details.get('details', [])
+        for detail in details:
+            if detail.get('@type') == 'type.googleapis.com/google.rpc.RetryInfo':
+                retry_delay = detail.get('retryDelay', '')
+                # Parse delay like '22s' to seconds
+                if retry_delay.endswith('s'):
+                    return float(retry_delay[:-1])
+        return None
+    except Exception:
+        return None
+
+def should_retry_gemini_error(error):
+    """
+    Check if the error should trigger a retry.
+    
+    Args:
+        error: The exception object
+        
+    Returns:
+        bool: True if retryable, False otherwise
+    """
+    error_str = str(error).lower()
+    
+    # Check for 429 Resource Exhausted errors
+    if '429' in error_str or 'resource_exhausted' in error_str:
+        return True
+    if 'too many requests' in error_str:
+        return True
+    if 'quota' in error_str and ('exceeded' in error_str or 'limit' in error_str):
+        return True
+    if 'retry' in error_str and 'delay' in error_str:
+        return True
+        
+    return False
+
+def call_gemini_with_retry(gemini_client, model, prompt, max_retries=3, initial_delay=1.0):
+    """
+    Call Gemini API with exponential backoff retry logic.
+    
+    Args:
+        gemini_client: Initialized Gemini client
+        model: Model name to use
+        prompt: The prompt to send
+        max_retries: Maximum number of retry attempts (default: 3)
+        initial_delay: Initial delay in seconds (default: 1.0)
+        
+    Returns:
+        tuple: (response, None) on success, or (None, error_message) on failure
+    """
+    delay = initial_delay
+    
+    for attempt in range(max_retries + 1):  # +1 to include the initial attempt
+        try:
+            logging.info(f"Gemini API call attempt {attempt + 1}/{max_retries + 1}")
+            response = gemini_client.models.generate_content(
+                model=model,
+                contents=prompt
+            )
+            logging.info("Gemini API call successful")
+            return response, None
+            
+        except Exception as e:
+            error_str = str(e)
+            logging.warning(f"Gemini API error on attempt {attempt + 1}: {error_str}")
+            
+            # Check if we should retry
+            if not should_retry_gemini_error(e):
+                # Non-retryable error
+                return None, f"Gemini API error: {error_str}"
+            
+            # Check if we've exhausted retries
+            if attempt >= max_retries:
+                # Try to get retry delay from error
+                retry_delay = parse_retry_delay(e)
+                if retry_delay:
+                    return None, f"Gemini API quota exceeded. Please retry after {retry_delay:.0f} seconds. For higher limits, upgrade your plan at https://aistudio.google.com/"
+                return None, f"Gemini API quota exceeded after {max_retries} retries. Please wait and try again, or upgrade your plan at https://aistudio.google.com/"
+            
+            # Wait before retrying with exponential backoff
+            logging.info(f"Waiting {delay:.1f} seconds before retry...")
+            time.sleep(delay)
+            
+            # Exponential backoff with jitter
+            delay = min(delay * 2 + (time.time() % 1), 60)  # Cap at 60 seconds
+    
+    return None, "Gemini API error: Maximum retries exceeded"
 
 # System instruction for BI tool
 system_instruction = """You are a generative BI (Business Intelligence) tool. Your purpose is to create components based on user prompts and provided data.
@@ -1119,12 +1219,11 @@ def chat():
     data_source = CONFIG.get('data_source')
     user_input = data.get('message')
 
+    # Validation check AFTER share_key/config_id processing to ensure config is loaded
     if data_source == 'google_sheets' and not worksheets:
         return jsonify({'response': 'Select at least one sheet first.'})
-    elif data_source in ['mysql', 'postgresql', 'neo4j', 'mongodb', 'oracle'] and not selected_tables:
+    elif data_source in ['mysql', 'postgresql', 'mssql', 'neo4j', 'mongodb', 'oracle', 'airtable', 'databricks', 'supabase', 'snowflake', 'odoo'] and not selected_tables:
         return jsonify({'response': 'Select at least one item first.'})
-
-    user_input = request.json.get('message')
 
     # Parse limit from user input, e.g., "show me 5 rows"
     limit = None
@@ -1347,16 +1446,18 @@ def chat():
         logging.error("Gemini client is None")
         return jsonify({'response': 'Gemini client not initialized. Please set credentials first.'})
 
-    try:
-        logging.info("Calling Gemini API")
-        response = gemini_client.models.generate_content(
-            model=CONFIG['gemini_model'],
-            contents=prompt
-        )
-        logging.info("Gemini API call completed")
-    except Exception as e:
-        logging.error(f"Gemini API error: {str(e)}")
-        return jsonify({'response': f'Gemini API error: {str(e)}'})
+    # Use retry wrapper for Gemini API calls
+    response, error_message = call_gemini_with_retry(
+        gemini_client=gemini_client,
+        model=CONFIG['gemini_model'],
+        prompt=prompt,
+        max_retries=3,  # Number of retries for quota errors
+        initial_delay=1.0  # Initial delay in seconds
+    )
+
+    if error_message:
+        logging.error(f"Gemini API error: {error_message}")
+        return jsonify({'response': error_message})
 
     bot_reply = "Sorry, no response."
     if response.candidates and response.candidates[0].content.parts:
@@ -1449,7 +1550,7 @@ def save_chatbot():
             db_username = data.get('neo4j_username')
             db_password = data.get('neo4j_password')
         elif data_source == 'mongodb':
-            selected_collections = data.get('selected_collections')
+            selected_collections = data.get('selected_tables')
             mongo_uri = data.get('mongo_uri')
             mongo_db_name = data.get('mongo_db_name')
         elif data_source == 'oracle':
@@ -1792,12 +1893,14 @@ def render_login_page(cb, share_key):
         'company_logo': cb.get('company_logo', '')
     }
 
+    company_name = cb.get('company_name', '')
+    display_name = f"{company_name} - {cb['chatbot_name']}" if company_name else cb['chatbot_name']
     html = f"""
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{cb['chatbot_name']} - Login</title>
+        <title>{display_name} - Login</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
         <style>
@@ -1860,25 +1963,29 @@ def render_login_page(cb, share_key):
     <body>
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                {f'<img src="{styles["company_logo"]}" alt="Logo" style="height: 40px; margin-right: 10px;">' if styles['company_logo'] else ''}
-                <span class="navbar-brand fw-bold">{cb['chatbot_name']}</span>
+                <div class="d-flex align-items-center">
+                    {f'<img src="{styles["company_logo"]}" alt="Logo" style="height: 40px; margin-right: 10px;">' if styles['company_logo'] else ''}
+                        <div class="d-flex flex-column">
+                            <span class="navbar-brand fw-bold mb-0" style="line-height: 1;">{display_name}</span>
+                        </div>
+                </div>
             </div>
         </nav>
         <div class="login-container">
             <h4 class="text-center mb-4">
-                <i class="fas fa-lock me-2" style="color: #28a745;"></i>Login to {cb['chatbot_name']}
+                <i class="fas fa-lock me-2" style="color: #28a745;"></i>Login to {display_name}
             </h4>
             <div id="errorAlert" class="alert alert-danger" style="display: none;" role="alert"></div>
             <form id="loginForm">
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" placeholder="Enter username" class="form-control" id="username" required style="border: 2px solid #28a745; border-radius: 10px;">
+                    <input type="text" placeholder="Enter username" class="form-control" id="username" required style="border: 1px solid #28a745; border-radius: 10px;">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" placeholder="Enter password" class="form-control" id="password" required style="border: 2px solid #28a745; border-radius: 10px;">
+                    <input type="password" placeholder="Enter password" class="form-control" id="password" required style="border: 1px solid #28a745; border-radius: 10px;">
                 </div>
-                <button type="submit" class="btn w-100" style="background-color: gray; border-color: #28a745; color: white;">
+                <button type="submit" class="btn w-100" style="background-color: black; border-color: #28a745; color: white;">
                     <i class="fas fa-sign-in-alt me-2"></i>Login
                 </button>
             </form>
@@ -1946,6 +2053,9 @@ def render_chat_page(cb, share_key):
         'company_logo': cb.get('company_logo', '')
     }
 
+    company_name = cb.get('company_name', '')
+    display_name = f"{company_name} - {cb['chatbot_name']}" if company_name else cb['chatbot_name']
+
     # Placeholders to avoid f-string interpolation issues with JavaScript template literals
     sender_placeholder = "${sender}"
     text_placeholder = "${text}"
@@ -1957,7 +2067,7 @@ def render_chat_page(cb, share_key):
     <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{cb['chatbot_name']}</title>
+        <title>{display_name}</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
         <style>
@@ -2182,7 +2292,7 @@ def render_chat_page(cb, share_key):
                 <div class="d-flex align-items-center">
                     {f'<img src="{styles["company_logo"]}" alt="Logo" style="height: 40px; margin-right: 10px;">' if styles['company_logo'] else ''}
                         <div class="d-flex flex-column">
-                            <span class="navbar-brand fw-bold mb-0" style="line-height: 1;">{cb['chatbot_name']}</span>
+                            <span class="navbar-brand fw-bold mb-0" style="line-height: 1;">{display_name}</span>
                         </div>
                 </div>
             </div>
@@ -2191,7 +2301,7 @@ def render_chat_page(cb, share_key):
     <div class="chat-container">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h4 class="m-0">
-                Chat with {cb['chatbot_name']}
+                Chat with {display_name}
             </h4>
             <button id="refreshBtn" class="btn btn-transparent btn-sm" type="button" title="Refresh Chat">🔄 Refresh</button>
         </div>
