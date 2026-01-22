@@ -43,8 +43,8 @@
             background: #fefefe;
         }
         .btn-light-green {
-            background-color: #28a745;
-            border-color: #28a745;
+            background-color: #000000;
+            border-color: #000000;
             color: white;
         }
 
@@ -54,10 +54,10 @@
             color: white;
         }
         .text-green {
-            color: #28a745;
+            color: #000000;
         }
         .footer-green-bg {
-            background-color: #28a745;
+            background-color: #000000;
         }
         .message {
             margin-bottom: 10px;
@@ -186,7 +186,7 @@
             background: linear-gradient(90deg, 
                 #e0e0e0 0%, 
                 #e0e0e0 25%, 
-                #28a745 50%, 
+                #000000 50%, 
                 #e0e0e0 75%, 
                 #e0e0e0 100%
             );
@@ -235,7 +235,7 @@
         #usernameInput:not(:placeholder-shown) ~ .floating-label {
             top: -1px;
             font-size: 0px;
-            color: #28a745;
+            color: #000000;
             font-weight: 400;
         }
 
@@ -243,8 +243,8 @@
         .input-wrapper:focus-within {
             animation-play-state: paused;
             background: linear-gradient(90deg, 
-                #28a745 0%, 
-                #28a745 100%
+                #000000 0%, 
+                #000000 100%
             );
         }
 
@@ -284,14 +284,14 @@
     }
 
     .chat-input-wrapper .mic-btn:hover {
-      background-color: #28a745;
+      background-color: #000000;
       color: #fff;
     }
 
     /* Send button */
     .chat-input-wrapper .send-btn {
       right: 10px;
-      background-color: #28a745;
+      background-color: #000000;
       color: #fff;
       font-size: 1.2rem;
     }
@@ -303,7 +303,7 @@
     /* Optional: input focus glow */
     .chat-input-wrapper input:focus {
       box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
-      border-color: #28a745;
+      border-color: #000000;
     }
 
         #chatbotsGridContainer {
@@ -328,7 +328,7 @@
     }
     
     .btn-outline-success:hover {
-        background: #28a745;
+        background: #000000;
         color: white;
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
@@ -345,7 +345,7 @@
     }
     
     .form-select:focus, .form-control:focus {
-        border-color: #28a745;
+        border-color: #000000;
         box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.15);
     }
     .btn-secondary{
@@ -366,13 +366,13 @@
 <body>
     <div class="d-flex align-items-center">
         <img src="public/images/logo.png" alt="Logo" class="me-2 ms-2" style="height: 40px;">    
-        <h5 class="mb-0 fw-bold">SmartCard AI</h5>
+        <h5 class="mb-0 fw-bold">Report Gini</h5>
     </div>
-    <div style="border-bottom: 2px solid #28a745; width: 100%;"></div>
+    <div style="border-bottom: 2px solid #000000; width: 100%;"></div>
     <div id="invisibleButton" title="Click 15 times to configure chatbot"></div>
     <div class="text-center mb-4 mb-md-5 px-2 px-md-0">
         <h1 id="mainH1" class="display-3 display-md-1 fw-bold mb-4 mx-md-5 lh-base mt-4 mt-md-5">Generative BI Chatbot</h1>
-        <span id="mainSpan" class="text-green display-3 display-md-1 fw-bold mx-md-3 lh-base d-block">SmartCard AI</span>
+        <span id="mainSpan" class="text-green display-3 display-md-1 fw-bold mx-md-3 lh-base d-block">Report Gini</span>
         <h2 id="mainH2" class="text-muted fs-6 fs-sm-5">Build Business Intelligence Chatbots within Few Minutes</h2>
         <!-- <p class="text-muted fs-6 fs-sm-5">Leverage Generative AI to Develop Business Intelligence Chatbots that Seamlessly Integrate with Your Data Sources.</p> -->
     </div>
@@ -397,7 +397,7 @@
             <button 
                 id="viewChatbotsBtn" 
                 class="btn" 
-                style="background: #28a745; color: white; border-radius: 30px; padding: 12px 35px; font-weight: 500; border: none; box-shadow: 0 2px 8px rgba(40,167,69,0.3); height: 51px; display: flex; align-items: center;">
+                style="background: #000000; color: white; border-radius: 30px; padding: 12px 35px; font-weight: 500; border: none; box-shadow: 0 2px 8px rgba(40,167,69,0.3); height: 51px; display: flex; align-items: center;">
                 See Chatbots
             </button>
         </div>
@@ -406,8 +406,8 @@
     <!-- Modal -->
     <div class="modal fade" id="configModal" tabindex="-1" aria-labelledby="configModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content" style="border: 2px solid #28a745; border-radius: 15px; box-shadow: 0 8px 32px rgba(40, 167, 69, 0.3);">
-          <div class="modal-header" style="background: linear-gradient(90deg, #28a745 0%, #218838 100%); color: white; border-bottom: 2px solid #28a745;">
+        <div class="modal-content" style="border: 2px solid #000000; border-radius: 15px; box-shadow: 0 8px 32px rgba(40, 167, 69, 0.3);">
+          <div class="modal-header" style="background: linear-gradient(90deg, #000000 0%, #218838 100%); color: white; border-bottom: 2px solid #000000;">
             <h5 class="modal-title" id="configModalLabel">Configure Chatbot</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
@@ -415,51 +415,51 @@
             <form id="configForm">
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label for="username" class="form-label" style="color: #28a745; font-weight: 400;">Username</label>
-                        <input type="text" placeholder="Username" class="form-control" id="username" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                        <label for="username" class="form-label" style="color: #000000; font-weight: 400;">Username</label>
+                        <input type="text" placeholder="Username" class="form-control" id="username" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                     </div>
                     <div class="col-md-6">
-                        <label for="chatbotName" class="form-label" style="color: #28a745; font-weight: 400;">Chatbot Name</label>
-                        <input type="text" placeholder="Chatbot Name" class="form-control" id="chatbotName" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                        <label for="chatbotName" class="form-label" style="color: #000000; font-weight: 400;">Chatbot Name</label>
+                        <input type="text" placeholder="Chatbot Name" class="form-control" id="chatbotName" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label for="companyName" class="form-label" style="color: #28a745; font-weight: 400;">Company Name</label>
-                        <input type="text" placeholder="Company Name" class="form-control" id="companyName" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                        <label for="companyName" class="form-label" style="color: #000000; font-weight: 400;">Company Name</label>
+                        <input type="text" placeholder="Company Name" class="form-control" id="companyName" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         
-                        <label for="chatbotId" class="form-label mt-3" style="color: #28a745; font-weight: 400;">Chatbot ID</label>
+                        <label for="chatbotId" class="form-label mt-3" style="color: #000000; font-weight: 400;">Chatbot ID</label>
                         <div class="d-flex gap-2">
-                            <input type="text" placeholder="Chatbot ID" class="form-control" id="chatbotId" readonly style="border: 1px solid #28a745; border-radius: 10px; padding: 5px; background-color: #f8f9fa; flex: 1;" />                        
-                            <button type="button" class="btn" id="generateIdBtn" style="background: #28a745; color: white; border: none; border-radius: 10px; padding: 5px 10px; font-weight: 400; cursor: pointer; white-space: nowrap;">Generate ID</button>
+                            <input type="text" placeholder="Chatbot ID" class="form-control" id="chatbotId" readonly style="border: 1px solid #000000; border-radius: 10px; padding: 5px; background-color: #f8f9fa; flex: 1;" />                        
+                            <button type="button" class="btn" id="generateIdBtn" style="background: #000000; color: white; border: none; border-radius: 10px; padding: 5px 10px; font-weight: 400; cursor: pointer; white-space: nowrap;">Generate ID</button>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <!-- Company Logo Section -->
-                        <label class="form-label" style="color: #28a745; font-weight: 400;">Company Logo</label>
-                        <div id="logoPreview" style="width: 100%; height: 80px; border: 1px dashed #28a745; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(40, 167, 69, 0.1); overflow: hidden; margin-bottom: 10px; position: relative;">
+                        <label class="form-label" style="color: #000000; font-weight: 400;">Company Logo</label>
+                        <div id="logoPreview" style="width: 100%; height: 80px; border: 1px dashed #000000; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(40, 167, 69, 0.1); overflow: hidden; margin-bottom: 10px; position: relative;">
                             <img id="logoImage" src="" alt="Logo Preview" style="max-width: 80%; max-height: 80%; object-fit: contain; display: none;" />
-                            <span id="logoPlaceholder" style="color: #28a745; font-weight: 400;">No logo selected</span>
+                            <span id="logoPlaceholder" style="color: #000000; font-weight: 400;">No logo selected</span>
                             <button type="button" id="removeLogoBtn" style="position: absolute; top: 5px; right: 5px; background: #dc3545; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; display: none; cursor: pointer; font-size: 16px;">×</button>
                         </div>
-                        <label for="companyLogo" class="btn w-100" style="background: #28a745; color: white; border: none; border-radius: 10px; padding: 5px 8px; font-weight: 400; cursor: pointer;">Upload Company Logo</label>
+                        <label for="companyLogo" class="btn w-100" style="background: #000000; color: white; border: none; border-radius: 10px; padding: 5px 8px; font-weight: 400; cursor: pointer;">Upload Company Logo</label>
                         <input type="file" id="companyLogo" accept="image/*" style="display: none;" />
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label for="setusername" class="form-label" style="color: #28a745; font-weight: 400;">Set Username</label>
-                        <input type="text" placeholder="Username" class="form-control" id="shared_username" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                        <label for="setusername" class="form-label" style="color: #000000; font-weight: 400;">Set Username</label>
+                        <input type="text" placeholder="Username" class="form-control" id="shared_username" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                     </div>
                     <div class="col-md-6">
-                        <label for="setpassword" class="form-label" style="color: #28a745; font-weight: 400;">Set Password</label>
-                        <input type="password" placeholder="Password" class="form-control" id="shared_password" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                        <label for="setpassword" class="form-label" style="color: #000000; font-weight: 400;">Set Password</label>
+                        <input type="password" placeholder="Password" class="form-control" id="shared_password" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label for="dataSource" class="form-label" style="color: #28a745; font-weight: 400;">Data Source</label>
-                        <select class="form-select" id="dataSource" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;">
+                        <label for="dataSource" class="form-label" style="color: #000000; font-weight: 400;">Data Source</label>
+                        <select class="form-select" id="dataSource" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;">
                             <option selected>None</option>
                             <option value="google_sheets">Google Sheets</option>
                             <option value="mysql">MySQL</option>
@@ -476,8 +476,8 @@
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="geminiModel" class="form-label" style="color: #28a745; font-weight: 400;">Gemini Model</label>
-                        <select class="form-select" id="geminiModel" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;">
+                        <label for="geminiModel" class="form-label" style="color: #000000; font-weight: 400;">Gemini Model</label>
+                        <select class="form-select" id="geminiModel" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;">
                             <option value="gemini-2.0-flash" selected>gemini-2.0-flash</option>
                             <option value="gemini-1.5-flash">gemini-1.5-flash</option>
                             <option value="gemini-1.5-pro">gemini-1.5-pro</option>
@@ -487,18 +487,18 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="geminiApiKey" class="form-label" style="color: #28a745; font-weight: 400;">Gemini API Key</label>
-                    <input type="password" placeholder="Gemini API Key" class="form-control" id="geminiApiKey" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                    <label for="geminiApiKey" class="form-label" style="color: #000000; font-weight: 400;">Gemini API Key</label>
+                    <input type="password" placeholder="Gemini API Key" class="form-control" id="geminiApiKey" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                 </div>
 
                 <!-- Credential fields container -->
                 <div id="credentialFields"></div>
 
                 <div class="mb-3" id="tableSelectionContainer" style="display:none;">
-                    <label class="form-label" style="color: #28a745; font-weight: 400;">Select Tables / Sheets</label>
+                    <label class="form-label" style="color: #000000; font-weight: 400;">Select Tables / Sheets</label>
                     <div id="tableSelection"></div>
                 </div>
-                <button type="submit" class="btn" style="background: #28a745; color: white; border: none; border-radius: 10px; padding: 12px 25px; font-weight: 400; transition: background 0.3s;">Save & Configure</button>
+                <button type="submit" class="btn" style="background: #000000; color: white; border: none; border-radius: 10px; padding: 12px 25px; font-weight: 400; transition: background 0.3s;">Save & Configure</button>
             </form>
           </div>
         </div>
@@ -516,7 +516,7 @@
           <div class="modal-body">
             <p>Share this link:</p>
             <input type="text" id="shareLinkInput" class="form-control" readonly />
-            <button class="btn btn-primary mt-2" id="copyShareLinkBtn" style="background-color: #28a745; border-color: #28a745;">Copy Link</button>
+            <button class="btn btn-primary mt-2" id="copyShareLinkBtn" style="background-color: #000000; border-color: #000000;">Copy Link</button>
           </div>
         </div>
       </div>
@@ -526,7 +526,7 @@
     <div id="chatbotsGridContainer" class="container mt-5" style="display: none;">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h3 class="mb-1" style="color: #28a745; font-weight: 500;">My Saved Chatbots</h3>
+                <h3 class="mb-1" style="color: #000000; font-weight: 500;">My Saved Chatbots</h3>
                 <p class="text-muted mb-0" style="font-size: 14px;">Manage and deploy your AI assistants</p>
             </div>
             <!-- <div class="d-flex gap-2">
@@ -541,7 +541,7 @@
             <div class="col-md-8">
                 <div class="input-group" style="border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
                     <span class="input-group-text" style="background: white; border: 1px solid #e0e0e0; border-right: none;">
-                        <i class="fas fa-search" style="color: #28a745;"></i>
+                        <i class="fas fa-search" style="color: #000000;"></i>
                     </span>
                     <input type="text" class="form-control" placeholder="Search chatbots..." style="border: 1px solid #e0e0e0; border-left: none; padding: 12px;">
                 </div>
@@ -662,12 +662,12 @@
             if(dataSource === 'google_sheets') {
                 credentialFieldsDiv.innerHTML = `
                     <div class="mb-3">
-                            <label for="sheetId" class="form-label" style="color: #28a745; font-weight: 400;">Google Sheet ID</label>
-                            <input type="text" placeholder="Sheet ID" class="form-control" id="sheetId" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />      
+                            <label for="sheetId" class="form-label" style="color: #000000; font-weight: 400;">Google Sheet ID</label>
+                            <input type="text" placeholder="Sheet ID" class="form-control" id="sheetId" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />      
                     </div>
                     <div class="mb-3">
-                        <label for="serviceAccountJson" class="form-label" style="color: #28a745; font-weight: 400;">Service Account JSON</label>
-                        <textarea class="form-control" id="serviceAccountJson" rows="4" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;"></textarea>
+                        <label for="serviceAccountJson" class="form-label" style="color: #000000; font-weight: 400;">Service Account JSON</label>
+                        <textarea class="form-control" id="serviceAccountJson" rows="4" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;"></textarea>
                     </div>
                     <button type="button" class="btn btn-secondary mb-3" id="loadTablesBtn" style="padding: 5px;">Load Tables</button>
                 `;
@@ -676,27 +676,27 @@
                 credentialFieldsDiv.innerHTML = `
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="dbHost" class="form-label" style="color: #28a745; font-weight: 400;">DB Host</label>
-                            <input type="text" placeholder="DB Host" class="form-control" id="dbHost" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbHost" class="form-label" style="color: #000000; font-weight: 400;">DB Host</label>
+                            <input type="text" placeholder="DB Host" class="form-control" id="dbHost" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                         <div class="col-md-6">
-                            <label for="dbPort" class="form-label" style="color: #28a745; font-weight: 400;">DB Port</label>
-                            <input type="number" placeholder="DB Port" class="form-control" id="dbPort" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbPort" class="form-label" style="color: #000000; font-weight: 400;">DB Port</label>
+                            <input type="number" placeholder="DB Port" class="form-control" id="dbPort" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="dbUsername" class="form-label" style="color: #28a745; font-weight: 400;">DB Username</label>
-                            <input type="text" placeholder="DB Username" class="form-control" id="dbUsername" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbUsername" class="form-label" style="color: #000000; font-weight: 400;">DB Username</label>
+                            <input type="text" placeholder="DB Username" class="form-control" id="dbUsername" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                         <div class="col-md-6">
-                            <label for="dbPassword" class="form-label" style="color: #28a745; font-weight: 400;">DB Password</label>
-                            <input type="password" placeholder="DB Password" class="form-control" id="dbPassword" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbPassword" class="form-label" style="color: #000000; font-weight: 400;">DB Password</label>
+                            <input type="password" placeholder="DB Password" class="form-control" id="dbPassword" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                     </div>
                     <div class="mb-3">
-                            <label for="dbName" class="form-label" style="color: #28a745; font-weight: 400;">DB Name</label>
-                            <input type="text" placeholder="DB Name" class="form-control" id="dbName" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbName" class="form-label" style="color: #000000; font-weight: 400;">DB Name</label>
+                            <input type="text" placeholder="DB Name" class="form-control" id="dbName" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                     </div>
                     <button type="button" class="btn btn-secondary mb-3" id="loadTablesBtn" style="padding: 5px;">Load Tables</button>
 
@@ -706,27 +706,27 @@
                 credentialFieldsDiv.innerHTML = `
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="dbHost" class="form-label" style="color: #28a745; font-weight: 400;">DB Host</label>
-                            <input type="text" placeholder="DB Host" class="form-control" id="dbHost" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbHost" class="form-label" style="color: #000000; font-weight: 400;">DB Host</label>
+                            <input type="text" placeholder="DB Host" class="form-control" id="dbHost" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                         <div class="col-md-6">
-                            <label for="dbPort" class="form-label" style="color: #28a745; font-weight: 400;">DB Port</label>
-                            <input type="number" placeholder="DB Port" class="form-control" id="dbPort" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbPort" class="form-label" style="color: #000000; font-weight: 400;">DB Port</label>
+                            <input type="number" placeholder="DB Port" class="form-control" id="dbPort" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="dbUsername" class="form-label" style="color: #28a745; font-weight: 400;">DB Username</label>
-                            <input type="text" placeholder="DB Username" class="form-control" id="dbUsername" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbUsername" class="form-label" style="color: #000000; font-weight: 400;">DB Username</label>
+                            <input type="text" placeholder="DB Username" class="form-control" id="dbUsername" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                         <div class="col-md-6">
-                            <label for="dbPassword" class="form-label" style="color: #28a745; font-weight: 400;">DB Password</label>
-                            <input type="password" placeholder="DB Password" class="form-control" id="dbPassword" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbPassword" class="form-label" style="color: #000000; font-weight: 400;">DB Password</label>
+                            <input type="password" placeholder="DB Password" class="form-control" id="dbPassword" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                     </div>
                     <div class="mb-3">
-                            <label for="dbName" class="form-label" style="color: #28a745; font-weight: 400;">DB Name</label>
-                            <input type="text" placeholder="DB Name" class="form-control" id="dbName" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbName" class="form-label" style="color: #000000; font-weight: 400;">DB Name</label>
+                            <input type="text" placeholder="DB Name" class="form-control" id="dbName" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                     </div>
                     <button type="button" class="btn btn-secondary mb-3" id="loadTablesBtn" style="padding: 5px;">Load Tables</button>
 
@@ -736,27 +736,27 @@
                 credentialFieldsDiv.innerHTML = `
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="dbHost" class="form-label" style="color: #28a745; font-weight: 400;">DB Host</label>
-                            <input type="text" placeholder="DB Host" class="form-control" id="dbHost" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbHost" class="form-label" style="color: #000000; font-weight: 400;">DB Host</label>
+                            <input type="text" placeholder="DB Host" class="form-control" id="dbHost" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                         <div class="col-md-6">
-                            <label for="dbPort" class="form-label" style="color: #28a745; font-weight: 400;">DB Port</label>
-                            <input type="number" placeholder="DB Port" class="form-control" id="dbPort" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbPort" class="form-label" style="color: #000000; font-weight: 400;">DB Port</label>
+                            <input type="number" placeholder="DB Port" class="form-control" id="dbPort" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="dbUsername" class="form-label" style="color: #28a745; font-weight: 400;">DB Username</label>
-                            <input type="text" placeholder="DB Username" class="form-control" id="dbUsername" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbUsername" class="form-label" style="color: #000000; font-weight: 400;">DB Username</label>
+                            <input type="text" placeholder="DB Username" class="form-control" id="dbUsername" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                         <div class="col-md-6">
-                            <label for="dbPassword" class="form-label" style="color: #28a745; font-weight: 400;">DB Password</label>
-                            <input type="password" placeholder="DB Password" class="form-control" id="dbPassword" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbPassword" class="form-label" style="color: #000000; font-weight: 400;">DB Password</label>
+                            <input type="password" placeholder="DB Password" class="form-control" id="dbPassword" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                     </div>
                     <div class="mb-3">
-                            <label for="dbName" class="form-label" style="color: #28a745; font-weight: 400;">DB Name</label>
-                            <input type="text" placeholder="DB Name" class="form-control" id="dbName" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" /> 
+                            <label for="dbName" class="form-label" style="color: #000000; font-weight: 400;">DB Name</label>
+                            <input type="text" placeholder="DB Name" class="form-control" id="dbName" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" /> 
                     </div>
                     <button type="button" class="btn btn-secondary mb-3" id="loadTablesBtn" style="padding: 5px;">Load Tables</button>
 
@@ -766,22 +766,22 @@
                 credentialFieldsDiv.innerHTML = `
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="neo4jUri" class="form-label" style="color: #28a745; font-weight: 400;">Neo4j URI</label>
-                            <input type="text" placeholder="Neo4j URI" class="form-control" id="neo4jUri" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="neo4jUri" class="form-label" style="color: #000000; font-weight: 400;">Neo4j URI</label>
+                            <input type="text" placeholder="Neo4j URI" class="form-control" id="neo4jUri" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                         <div class="col-md-6">
-                            <label for="neo4jUsername" class="form-label" style="color: #28a745; font-weight: 400;">Neo4j Username</label>
-                            <input type="text" placeholder="Neo4j Username" class="form-control" id="neo4jUsername" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="neo4jUsername" class="form-label" style="color: #000000; font-weight: 400;">Neo4j Username</label>
+                            <input type="text" placeholder="Neo4j Username" class="form-control" id="neo4jUsername" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="neo4jPassword" class="form-label" style="color: #28a745; font-weight: 400;">Neo4j Password</label>
-                            <input type="password" placeholder="Neo4j Password" class="form-control" id="neo4jPassword" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="neo4jPassword" class="form-label" style="color: #000000; font-weight: 400;">Neo4j Password</label>
+                            <input type="password" placeholder="Neo4j Password" class="form-control" id="neo4jPassword" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                         <div class="col-md-6">
-                            <label for="neo4jDbName" class="form-label" style="color: #28a745; font-weight: 400;">Neo4j Database Name</label>
-                            <input type="text" placeholder="Neo4j Database Name" class="form-control" id="neo4jDbName" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="neo4jDbName" class="form-label" style="color: #000000; font-weight: 400;">Neo4j Database Name</label>
+                            <input type="text" placeholder="Neo4j Database Name" class="form-control" id="neo4jDbName" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                     </div>
                     <button type="button" class="btn btn-secondary mb-3" id="loadTablesBtn" style="padding: 5px;">Load Tables</button>
@@ -791,12 +791,12 @@
                 credentialFieldsDiv.innerHTML = `
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="mongoUri" class="form-label" style="color: #28a745; font-weight: 400;">MongoDB URI</label>
-                            <input type="text" placeholder="MongoDB URI" class="form-control" id="mongoUri" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="mongoUri" class="form-label" style="color: #000000; font-weight: 400;">MongoDB URI</label>
+                            <input type="text" placeholder="MongoDB URI" class="form-control" id="mongoUri" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                         <div class="col-md-6">
-                            <label for="mongoDbName" class="form-label" style="color: #28a745; font-weight: 400;">MongoDB Database Name</label>
-                            <input type="text" placeholder="MongoDB Database Name" class="form-control" id="mongoDbName" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="mongoDbName" class="form-label" style="color: #000000; font-weight: 400;">MongoDB Database Name</label>
+                            <input type="text" placeholder="MongoDB Database Name" class="form-control" id="mongoDbName" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                     </div>
                         <button type="button" class="btn btn-secondary mb-3" id="loadTablesBtn" style="padding: 5px;">Load Tables</button>
@@ -806,27 +806,27 @@
                 credentialFieldsDiv.innerHTML = `
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="dbHost" class="form-label" style="color: #28a745; font-weight: 400;">DB Host</label>
-                            <input type="text" placeholder="DB Host" class="form-control" id="dbHost" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbHost" class="form-label" style="color: #000000; font-weight: 400;">DB Host</label>
+                            <input type="text" placeholder="DB Host" class="form-control" id="dbHost" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                         <div class="col-md-6">
-                            <label for="dbPort" class="form-label" style="color: #28a745; font-weight: 400;">DB Port</label>
-                            <input type="number" placeholder="DB Port" class="form-control" id="dbPort" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbPort" class="form-label" style="color: #000000; font-weight: 400;">DB Port</label>
+                            <input type="number" placeholder="DB Port" class="form-control" id="dbPort" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="dbUsername" class="form-label" style="color: #28a745; font-weight: 400;">DB Username</label>
-                            <input type="text" placeholder="DB Username" class="form-control" id="dbUsername" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbUsername" class="form-label" style="color: #000000; font-weight: 400;">DB Username</label>
+                            <input type="text" placeholder="DB Username" class="form-control" id="dbUsername" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                         <div class="col-md-6">
-                            <label for="dbPassword" class="form-label" style="color: #28a745; font-weight: 400;">DB Password</label>
-                            <input type="password" placeholder="DB Password" class="form-control" id="dbPassword" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbPassword" class="form-label" style="color: #000000; font-weight: 400;">DB Password</label>
+                            <input type="password" placeholder="DB Password" class="form-control" id="dbPassword" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                     </div>
                     <div class="mb-3">
-                            <label for="dbName" class="form-label" style="color: #28a745; font-weight: 400;">DB Name</label>
-                            <input type="text" placeholder="DB Name" class="form-control" id="dbName" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="dbName" class="form-label" style="color: #000000; font-weight: 400;">DB Name</label>
+                            <input type="text" placeholder="DB Name" class="form-control" id="dbName" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                     </div>
                     <button type="button" class="btn btn-secondary mb-3" id="loadTablesBtn" style="padding: 5px;">Load Tables</button>
                 `;
@@ -835,12 +835,12 @@
                 credentialFieldsDiv.innerHTML = `
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="airtableApiKey" class="form-label" style="color: #28a745; font-weight: 400;">Airtable API Key</label>
-                            <input type="password" placeholder="Airtable API Key" class="form-control" id="airtableApiKey" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="airtableApiKey" class="form-label" style="color: #000000; font-weight: 400;">Airtable API Key</label>
+                            <input type="password" placeholder="Airtable API Key" class="form-control" id="airtableApiKey" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                         <div class="col-md-6">
-                            <label for="airtableBaseId" class="form-label" style="color: #28a745; font-weight: 400;">Airtable Base ID</label>
-                            <input type="text" placeholder="Airtable Base ID" class="form-control" id="airtableBaseId" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="airtableBaseId" class="form-label" style="color: #000000; font-weight: 400;">Airtable Base ID</label>
+                            <input type="text" placeholder="Airtable Base ID" class="form-control" id="airtableBaseId" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                     </div>
                     <button type="button" class="btn btn-secondary mb-3" id="loadTablesBtn" style="padding: 5px;">Load Tables</button>
@@ -850,17 +850,17 @@
                 credentialFieldsDiv.innerHTML = `
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="databricksHostname" class="form-label" style="color: #28a745; font-weight: 400;">Databricks Hostname</label>
-                            <input type="text" placeholder="Databricks Hostname" class="form-control" id="databricksHostname" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="databricksHostname" class="form-label" style="color: #000000; font-weight: 400;">Databricks Hostname</label>
+                            <input type="text" placeholder="Databricks Hostname" class="form-control" id="databricksHostname" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                         <div class="col-md-6">
-                            <label for="databricksHttpPath" class="form-label" style="color: #28a745; font-weight: 400;">Databricks HTTP Path</label>
-                            <input type="text" placeholder="Databricks HTTP Path" class="form-control" id="databricksHttpPath" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="databricksHttpPath" class="form-label" style="color: #000000; font-weight: 400;">Databricks HTTP Path</label>
+                            <input type="text" placeholder="Databricks HTTP Path" class="form-control" id="databricksHttpPath" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                     </div>
                     <div class="mb-3">
-                            <label for="databricksToken" class="form-label" style="color: #28a745; font-weight: 400;">Databricks Token</label>
-                            <input type="password" placeholder="Databricks Token" class="form-control" id="databricksToken" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="databricksToken" class="form-label" style="color: #000000; font-weight: 400;">Databricks Token</label>
+                            <input type="password" placeholder="Databricks Token" class="form-control" id="databricksToken" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                     </div>
                     <button type="button" class="btn btn-secondary mb-3" id="loadTablesBtn" style="padding: 5px;">Load Tables</button>
                 `;
@@ -869,12 +869,12 @@
                 credentialFieldsDiv.innerHTML = `
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="supabaseUrl" class="form-label" style="color: #28a745; font-weight: 400;">Supabase URL</label>
-                            <input type="text" placeholder="Supabase URL" class="form-control" id="supabaseUrl" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="supabaseUrl" class="form-label" style="color: #000000; font-weight: 400;">Supabase URL</label>
+                            <input type="text" placeholder="Supabase URL" class="form-control" id="supabaseUrl" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                         <div class="col-md-6">
-                            <label for="supabaseAnonKey" class="form-label" style="color: #28a745; font-weight: 400;">Supabase Anon Key</label>
-                            <input type="password" placeholder="Supabase Anon Key" class="form-control" id="supabaseAnonKey" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="supabaseAnonKey" class="form-label" style="color: #000000; font-weight: 400;">Supabase Anon Key</label>
+                            <input type="password" placeholder="Supabase Anon Key" class="form-control" id="supabaseAnonKey" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                     </div>
                     <button type="button" class="btn btn-secondary mb-3" id="loadTablesBtn" style="padding: 5px;">Load Tables</button>
@@ -884,37 +884,37 @@
                 credentialFieldsDiv.innerHTML = `
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="snowflakeAccount" class="form-label" style="color: #28a745; font-weight: 400;">Snowflake Account</label>
-                            <input type="text" placeholder="Snowflake Account" class="form-control" id="snowflakeAccount" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="snowflakeAccount" class="form-label" style="color: #000000; font-weight: 400;">Snowflake Account</label>
+                            <input type="text" placeholder="Snowflake Account" class="form-control" id="snowflakeAccount" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                         <div class="col-md-6">
-                            <label for="snowflakeUser" class="form-label" style="color: #28a745; font-weight: 400;">Snowflake User</label>
-                            <input type="text" placeholder="Snowflake User" class="form-control" id="snowflakeUser" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="snowflakePassword" class="form-label" style="color: #28a745; font-weight: 400;">Snowflake Password</label>
-                            <input type="password" placeholder="Snowflake Password" class="form-control" id="snowflakePassword" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
-                        </div>
-                        <div class="col-md-6">
-                            <label for="snowflakeWarehouse" class="form-label" style="color: #28a745; font-weight: 400;">Snowflake Warehouse</label>
-                            <input type="text" placeholder="Snowflake Warehouse" class="form-control" id="snowflakeWarehouse" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="snowflakeUser" class="form-label" style="color: #000000; font-weight: 400;">Snowflake User</label>
+                            <input type="text" placeholder="Snowflake User" class="form-control" id="snowflakeUser" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="snowflakeDatabase" class="form-label" style="color: #28a745; font-weight: 400;">Snowflake Database</label>
-                            <input type="text" placeholder="Snowflake Database" class="form-control" id="snowflakeDatabase" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="snowflakePassword" class="form-label" style="color: #000000; font-weight: 400;">Snowflake Password</label>
+                            <input type="password" placeholder="Snowflake Password" class="form-control" id="snowflakePassword" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                         <div class="col-md-6">
-                            <label for="snowflakeSchema" class="form-label" style="color: #28a745; font-weight: 400;">Snowflake Schema</label>
-                            <input type="text" placeholder="Snowflake Schema" class="form-control" id="snowflakeSchema" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="snowflakeWarehouse" class="form-label" style="color: #000000; font-weight: 400;">Snowflake Warehouse</label>
+                            <input type="text" placeholder="Snowflake Warehouse" class="form-control" id="snowflakeWarehouse" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="snowflakeDatabase" class="form-label" style="color: #000000; font-weight: 400;">Snowflake Database</label>
+                            <input type="text" placeholder="Snowflake Database" class="form-control" id="snowflakeDatabase" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="snowflakeSchema" class="form-label" style="color: #000000; font-weight: 400;">Snowflake Schema</label>
+                            <input type="text" placeholder="Snowflake Schema" class="form-control" id="snowflakeSchema" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                         </div>
                     </div>
                     <div class="mb-3">
-                            <label for="snowflakeRole" class="form-label" style="color: #28a745; font-weight: 400;">Snowflake Role</label>
-                            <input type="text" placeholder="Snowflake Role" class="form-control" id="snowflakeRole" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;" />
+                            <label for="snowflakeRole" class="form-label" style="color: #000000; font-weight: 400;">Snowflake Role</label>
+                            <input type="text" placeholder="Snowflake Role" class="form-control" id="snowflakeRole" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;" />
                     </div>
                     <button type="button" class="btn btn-secondary mb-3" id="loadTablesBtn">Load Tables</button>
                 `;
@@ -923,27 +923,27 @@
                 credentialFieldsDiv.innerHTML = `
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="odooUrl" class="form-label" style="color: #28a745; font-weight: 400;">Odoo URL</label>
-                            <input type="text" placeholder="Odoo URL" class="form-control" id="odooUrl" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;"/>
+                            <label for="odooUrl" class="form-label" style="color: #000000; font-weight: 400;">Odoo URL</label>
+                            <input type="text" placeholder="Odoo URL" class="form-control" id="odooUrl" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;"/>
                         </div>
                         <div class="col-md-6">
-                            <label for="odooDb" class="form-label" style="color: #28a745; font-weight: 400;">Odoo Database</label>
-                            <input type="text" placeholder="Odoo Database" class="form-control" id="odooDb" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;"/>
+                            <label for="odooDb" class="form-label" style="color: #000000; font-weight: 400;">Odoo Database</label>
+                            <input type="text" placeholder="Odoo Database" class="form-control" id="odooDb" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;"/>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="odooUsername" class="form-label" style="color: #28a745; font-weight: 400;">Odoo Username</label>
-                            <input type="text" placeholder="Odoo Username" class="form-control" id="odooUsername" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;"/>
+                            <label for="odooUsername" class="form-label" style="color: #000000; font-weight: 400;">Odoo Username</label>
+                            <input type="text" placeholder="Odoo Username" class="form-control" id="odooUsername" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;"/>
                         </div>
                         <div class="col-md-6">
-                            <label for="odooPassword" class="form-label" style="color: #28a745; font-weight: 400;">Odoo Password</label>
-                            <input type="password" placeholder="Odoo Password" class="form-control" id="odooPassword" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;"/>
+                            <label for="odooPassword" class="form-label" style="color: #000000; font-weight: 400;">Odoo Password</label>
+                            <input type="password" placeholder="Odoo Password" class="form-control" id="odooPassword" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;"/>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="selectedModule" class="form-label" style="color: #28a745; font-weight: 400;">Odoo Module</label>
-                        <select class="form-select" placeholder="Odoo Module" id="selectedModule" required style="border: 1px solid #28a745; border-radius: 10px; padding: 5px;">
+                        <label for="selectedModule" class="form-label" style="color: #000000; font-weight: 400;">Odoo Module</label>
+                        <select class="form-select" placeholder="Odoo Module" id="selectedModule" required style="border: 1px solid #000000; border-radius: 10px; padding: 5px;">
                             <option value="CRM">CRM</option>
                             <option value="Sales">Sales</option>
                             <option value="Inventry">Inventry</option>
@@ -1347,7 +1347,7 @@
                                 </div>
                                 <h5 class="card-title mb-3">${cb.chatbot_name}</h5>
                                 <div class="d-flex gap-2">
-                                    <button class="btn btn-primary btn-sm load-btn" style="background-color: #28a745; border-color: #28a745;" onclick="loadChatbot('${cb.share_key}')">Load</button>
+                                    <button class="btn btn-primary btn-sm load-btn" style="background-color: #000000; border-color: #000000;" onclick="loadChatbot('${cb.share_key}')">Load</button>
                                     <button class="btn btn-secondary btn-sm share-btn" onclick="shareChatbot('${cb.share_key}', '${cb.chatbot_name}')">Share</button>
                                 </div>
                             </div>
@@ -1417,8 +1417,8 @@
             copyShareLinkBtn.style.borderColor = '#6c757d';
             setTimeout(() => {
                 copyShareLinkBtn.textContent = originalText;
-                copyShareLinkBtn.style.backgroundColor = '#28a745';
-                copyShareLinkBtn.style.borderColor = '#28a745';
+                copyShareLinkBtn.style.backgroundColor = '#000000';
+                copyShareLinkBtn.style.borderColor = '#000000';
             }, 2000);
         }
 
