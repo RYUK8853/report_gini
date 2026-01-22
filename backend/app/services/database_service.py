@@ -1,10 +1,10 @@
 import sqlite3
 import logging
 import oracledb
-import pymssql  # Commented out to avoid import error
-from pyairtable import Api
+# import pymssql  # Commented out - fails to build on Python 3.14
+# from pyairtable import Api  # Commented out - fails on Python 3.14
 from databricks import sql
-from supabase import create_client, Client
+# from supabase import create_client, Client  # Commented out - fails on Python 3.14
 import snowflake.connector
 from neo4j import GraphDatabase
 import xmlrpc.client
@@ -308,38 +308,8 @@ class DatabaseService:
         Returns:
             list[dict]: Query results as list of dicts, or error dict on failure
         """
-        conn = None
-        cur = None
-
-        try:
-            # Connect
-            conn = pymssql.connect(
-                server=creds['host'],
-                port=creds.get('port', 1433),
-                user=creds['user'],
-                password=creds['password'],
-                database=creds['database']
-            )
-            cur = conn.cursor()
-
-            # Execute query
-            cur.execute(query)
-
-            # Extract results
-            columns = [column[0] for column in cur.description]
-            rows = cur.fetchall()
-            results = [dict(zip(columns, row)) for row in rows]
-
-            return results
-
-        except Exception as e:
-            logger.error(f"MS SQL fetch failed: {str(e)}")
-            return {"status": "error", "message": f"MS SQL fetch failed: {str(e)}"}
-        finally:
-            if cur:
-                cur.close()
-            if conn:
-                conn.close()
+        # pymssql is not available on Python 3.14 due to build issues
+        return {"status": "error", "message": "MS SQL Server support is not available on Python 3.14. Please use Python 3.11 or earlier."}
 
     def fetch_from_airtable(self, creds, query=None):
         """
@@ -352,20 +322,8 @@ class DatabaseService:
         Returns:
             list[dict]: Records as list of dicts, or error dict on failure
         """
-        try:
-            api = Api(creds['api_key'])
-            base = api.base(creds['base_id'])
-            table = base.table(query)
-            records = table.all()
-
-            results = []
-            for record in records:
-                results.append({'id': record['id'], 'fields': record['fields']})
-            return results
-
-        except Exception as e:
-            logger.error(f"Airtable fetch failed: {str(e)}")
-            return {"status": "error", "message": f"Airtable fetch failed: {str(e)}"}
+        # pyairtable is not available on Python 3.14 due to pydantic compatibility issues
+        return {"status": "error", "message": "Airtable support is not available on Python 3.14. Please use Python 3.11 or earlier."}
 
     def fetch_from_databricks(self, creds, query=None):
             """
@@ -422,30 +380,8 @@ class DatabaseService:
         Returns:
             list[dict] or list[str]: Records as list of dicts, or list of table names if query is None/'all', or error dict on failure
         """
-        try:
-            supabase: Client = create_client(creds['url'], creds['anon_key'])
-            if query is None or query.lower() == 'all':
-                # Fetch all table names
-                import requests
-                api_url = creds['url'].rstrip('/') + '/rest/v1/'
-                headers = {
-                    'Authorization': f'Bearer {creds["anon_key"]}',
-                    'apikey': creds['anon_key']
-                }
-                response = requests.get(api_url, headers=headers)
-                if response.status_code == 200:
-                    spec = response.json()
-                    paths = spec.get('paths', {})
-                    results = [path.strip('/') for path in paths.keys() if path.startswith('/') and path != '/']
-                else:
-                    results = []
-            else:
-                response = supabase.table(query).select('*').execute()
-                results = response.data
-            return results
-        except Exception as e:
-            logger.error(f"Supabase fetch failed: {str(e)}")
-            return {"status": "error", "message": f"Supabase fetch failed: {str(e)}"}
+        # supabase is not available on Python 3.14 due to dependency compatibility issues
+        return {"status": "error", "message": "Supabase support is not available on Python 3.14. Please use Python 3.11 or earlier."}
 
     def fetch_from_snowflake(self, creds, query=None):
         """
