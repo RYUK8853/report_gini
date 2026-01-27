@@ -2210,7 +2210,7 @@ def render_chat_page(cb, share_key):
             }}
 
             .quick-reply-btn-dark:hover {{
-                background: rgba(0, 0, , 1.2);
+                background: rgba(0, 0, 0, 1);
                 transform: scale(1.05);
             }}
 
